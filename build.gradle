@@ -39,19 +39,22 @@ subprojects {
         }
     }
 
-    if (it.name.endsWith("-impl") || it.name == "api-gateway" || it.name == "config-server" || it.name == "eureka-server") {
+    if (it.name.endsWith("-client") || it.name.endsWith("-impl") || it.name == "api-gateway" || it.name == "config-server" || it.name == "eureka-server") {
 
         apply plugin: 'org.springframework.boot'
-
-        dependencies {
-            testCompile "junit:junit:${junitVersion}"
-            testCompile 'org.springframework.boot:spring-boot-starter-test'
-        }
 
         dependencyManagement {
             imports {
                 mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
             }
+        }
+    }
+
+    if (it.name.endsWith("-impl") || it.name == "api-gateway" || it.name == "config-server" || it.name == "eureka-server") {
+
+        dependencies {
+            testCompile "junit:junit:${junitVersion}"
+            testCompile 'org.springframework.boot:spring-boot-starter-test'
         }
     }
 
@@ -67,6 +70,12 @@ subprojects {
             compile 'com.zaxxer:HikariCP'
 
             compile "mysql:mysql-connector-java:${mysqlVersion}"
+        }
+    }
+
+    if(it.name.endsWith("-client")) {
+        dependencies {
+            compile 'org.springframework.cloud:spring-cloud-starter-feign'
         }
     }
 }

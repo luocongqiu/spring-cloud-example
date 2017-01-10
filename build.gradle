@@ -1,10 +1,73 @@
-apply plugin: 'java'
+buildscript {
 
+    repositories {
+        mavenLocal()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        mavenCentral()
+    }
 
-repositories {
-    mavenCentral()
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.9"
+    }
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+allprojects {
+
+    repositories {
+        mavenLocal()
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        mavenCentral()
+    }
 }
+
+subprojects {
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+    if (it.name.endsWith("-api")) {
+        dependencies {
+            compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        }
+    }
+
+    if (it.name.endsWith("-impl") || it.name == "api-gateway" || it.name == "config-server" || it.name == "eureka-server") {
+
+        apply plugin: 'org.springframework.boot'
+
+        dependencies {
+            testCompile "junit:junit:${junitVersion}"
+            testCompile 'org.springframework.boot:spring-boot-starter-test'
+        }
+
+        dependencyManagement {
+            imports {
+                mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
+            }
+        }
+    }
+
+    if (it.name.endsWith("-impl") || it.name.endsWith("-api")) {
+        apply plugin: "net.ltgt.apt"
+        apply from: "$rootDir/gradle/lombok.gradle"
+    }
+
+    if (it.name.endsWith("-impl")) {
+        apply from: "$rootDir/gradle/mapstruct.gradle"
+        dependencies {
+            compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${springBootMybatisVersion}"
+            compile 'com.zaxxer:HikariCP'
+
+            compile "mysql:mysql-connector-java:${mysqlVersion}"
+        }
+    }
+}
+

@@ -7,18 +7,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     preferIpAddress: true
-spring:
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://10.1.234.51/opaas?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
-    username: opaas
-    password: opaas
-    driver-class-name: com.mysql.jdbc.Driver
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
-    default-property-inclusion: non_empty
 
-mybatis:
-  mapper-locations: classpath*:mapper/*Mapper.xml
-  type-aliases-package: com.ai.user.repository

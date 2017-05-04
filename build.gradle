@@ -5,11 +5,15 @@ buildscript {
         maven {
             url 'http://maven.aliyun.com/nexus/content/groups/public/'
         }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
         mavenCentral()
     }
 
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "io.spring.gradle:dependency-management-plugin:${springDependencyManagementVersion}"
         classpath "net.ltgt.gradle:gradle-apt-plugin:0.9"
     }
 }
@@ -28,29 +32,33 @@ allprojects {
 subprojects {
 
     apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
 
     sourceCompatibility = 1.8
 
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-    if (it.name.endsWith("-api")) {
-        dependencies {
-            compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
         }
     }
 
-    if (it.name.endsWith("-client") || it.name.endsWith("-impl") || it.name == "api-gateway" || it.name == "config-server" || it.name == "eureka-server") {
 
-        apply plugin: 'org.springframework.boot'
+    jar {
+        version = "$version"
+    }
 
-        dependencyManagement {
-            imports {
-                mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
-            }
+    if (it.name.endsWith("-api")) {
+        dependencies {
+            compile "org.springframework.boot:spring-boot-starter-web"
         }
     }
 
     if (it.name.endsWith("-impl") || it.name == "api-gateway" || it.name == "config-server" || it.name == "eureka-server") {
+
+        apply plugin: 'org.springframework.boot'
 
         dependencies {
             testCompile "junit:junit:${junitVersion}"
@@ -66,9 +74,19 @@ subprojects {
     if (it.name.endsWith("-impl")) {
         apply from: "$rootDir/gradle/mapstruct.gradle"
         dependencies {
+
+            compile 'org.springframework.cloud:spring-cloud-starter-config'
+            compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+            compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
+            compile 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+            compile 'org.springframework.boot:spring-boot-starter-actuator'
+
+            compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
+            compile 'org.springframework.boot:spring-boot-starter-redis'
+            compile "org.springframework.boot:spring-boot-devtools"
+
             compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${springBootMybatisVersion}"
             compile 'com.zaxxer:HikariCP'
-
             compile "mysql:mysql-connector-java:${mysqlVersion}"
         }
     }

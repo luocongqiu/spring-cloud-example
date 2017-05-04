@@ -18,7 +18,7 @@ public class UserResourceImpl implements UserResource {
         this.userService = userService;
     }
 
-    public UserDTO findById(@PathVariable("id") Integer id) {
+    public UserDTO findById(@PathVariable("id") int id) {
         return userService.findById(id);
     }
 

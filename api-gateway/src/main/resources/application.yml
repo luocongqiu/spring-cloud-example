@@ -9,3 +9,20 @@ zuul:
     user:
       path: /api/users/**
       stripPrefix: false
+    auth-server:
+      path: /uaa/**
+      stripPrefix: false
+  add-proxy-headers: true
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      access-token-uri: /uaa/oauth/token
+      user-authorization-uri: /uaa/oauth/authorize
+      client-id: root
+      client-secret: root
+    resource:
+      token-info-uri: http://localhost:8080/uaa/oauth/check_token
+

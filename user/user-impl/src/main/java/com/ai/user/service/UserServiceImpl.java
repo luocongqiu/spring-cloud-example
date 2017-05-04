@@ -1,6 +1,7 @@
 package com.ai.user.service;
 
 import com.ai.core.exception.BusinessException;
+import com.ai.user.domain.User;
 import com.ai.user.repository.UserRepository;
 import com.ai.user.web.dto.UserDTO;
 import com.ai.user.web.mapper.UserMapper;
@@ -24,6 +25,9 @@ public class UserServiceImpl implements UserService {
         if (id == 1) {
             throw new BusinessException("用户不存在");
         }
+        User user = new User();
+        user.setId(2);
+        user.setName("测试用户");
         return UserMapper.INSTANCE.toDTO(userRepository.findById(id));
     }
 

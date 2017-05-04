@@ -3,4 +3,6 @@ spring:
     name: user
   cloud:
     config:
-      uri: http://localhost:8888
+      uri:  http://localhost:8888
+  jmx:
+    default-domain: user

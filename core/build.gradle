@@ -2,5 +2,5 @@ apply plugin: "net.ltgt.apt"
 apply from: "$rootDir/gradle/lombok.gradle"
 
 dependencies {
-    compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-web"
 }

@@ -1,9 +1,3 @@
-
-jar {
-	baseName = 'config-server'
-	version = '0.0.1-SNAPSHOT'
-}
-
 dependencies {
 	compile 'org.springframework.cloud:spring-cloud-config-server'
 }

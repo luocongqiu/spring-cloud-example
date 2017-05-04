@@ -1,0 +1,8 @@
+server:
+  port: 9009
+  context-path: /uaa
+security:
+  oauth2:
+    client:
+      client-id: root
+      client-secret: root

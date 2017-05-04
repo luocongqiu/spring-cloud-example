@@ -1,0 +1,11 @@
+server:
+  port: 9999
+  context-path: /uaa
+spring:
+  redis:
+    host: localhost
+security:
+  oauth2:
+    client:
+      client-id: root
+      client-secret: root

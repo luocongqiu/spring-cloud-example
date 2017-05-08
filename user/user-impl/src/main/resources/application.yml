@@ -1,8 +1,0 @@
-server:
-  port: 9005
-  context-path: /api
-eureka:
-  resource:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-

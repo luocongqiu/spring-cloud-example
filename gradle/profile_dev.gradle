@@ -1,0 +1,10 @@
+def profiles = 'dev,swagger'
+
+processResources {
+    filesMatching('**/bootstrap.yml') {
+        filter {
+            it.replace('#spring.profiles.active#', profiles)
+        }
+    }
+}
+

@@ -4,5 +4,5 @@ spring:
   cloud:
     config:
       uri:  http://localhost:8888
-  jmx:
-    default-domain: user
+  profiles:
+    active: #spring.profiles.active#

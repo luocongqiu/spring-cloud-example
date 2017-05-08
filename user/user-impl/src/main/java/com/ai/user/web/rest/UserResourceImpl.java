@@ -4,6 +4,7 @@ import com.ai.user.service.UserService;
 import com.ai.user.web.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,5 +25,10 @@ public class UserResourceImpl implements UserResource {
 
     public List<UserDTO> findAll() {
         return userService.findAll();
+    }
+
+    @Override
+    public List<UserDTO> save(@RequestBody(required = false) List<UserDTO> users) {
+        return users;
     }
 }

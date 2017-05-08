@@ -1,0 +1,15 @@
+server:
+  port: 8080
+zuul:
+  routes:
+    user:
+      path: /api/users/**
+      stripPrefix: false
+    auth-server:
+      path: /uaa/**
+      stripPrefix: false
+  add-proxy-headers: true
+
+ribbon:
+    ReadTimeout: 15000
+

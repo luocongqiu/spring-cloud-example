@@ -1,0 +1,16 @@
+def profiles = 'prod'
+if (project.hasProperty('no-liquibase')) {
+    profiles += ',no-liquibase'
+}
+
+if (project.hasProperty('swagger')) {
+    profiles += ',swagger'
+}
+
+processResources {
+    filesMatching('**/bootstrap.yml') {
+        filter {
+            it.replace('#spring.profiles.active#', profiles)
+        }
+    }
+}

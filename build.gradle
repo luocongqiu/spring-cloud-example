@@ -34,6 +34,13 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
 
+
+    if (project.hasProperty("prod")) {
+        apply from: "$rootDir/gradle/profile_prod.gradle"
+    } else {
+        apply from: "$rootDir/gradle/profile_dev.gradle"
+    }
+
     sourceCompatibility = 1.8
 
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'

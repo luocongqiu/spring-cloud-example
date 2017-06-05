@@ -1,0 +1,75 @@
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.center-in-parent {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.v-center-in-parent {
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.v-center {
+  display: flex;
+  align-items: center;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.rolate90 {
+  transform: rotate(90deg);
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.d-inline, .d-inline-block, .d-block, .d-table, .d-table-cell, .d-flex, .d-inline-flex {
+  &[hidden] {
+    display: none !important;
+  }
+}
+.shadow-1{
+  border: 1px solid $color-border-light !important;
+  box-shadow: 0 0 2px $color-border-light;
+}

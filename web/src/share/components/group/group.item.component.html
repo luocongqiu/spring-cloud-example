@@ -1,0 +1,33 @@
+<div class="groupItem" ngbDropdown>
+    <span class="text" (click)="toggleGroup()">
+        <i class="icon" [ngClass]="group.group_icon || 'icon-v-more-circle'"></i>
+        {{group.group_name}}
+    </span>
+    <a class="icon icon-triangle-right" ngbDropdownToggle id="{{group.group_id}}" *ngIf="group.group_menus.length"></a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="" *ngIf="group.group_menus.length">
+        <button class="dropdown-item" *ngFor="let menu of group.group_menus" (click)="_onSelectThisGroupMenu(group,menu)">
+            <i class="icon" [ngClass]="menu.menu_icon"></i>
+            <span class="dropdown-item-text">{{menu.menu_name}}</span>
+        </button>
+    </div>
+</div>
+<!-- 子分组，如果存在则继续递归 -->
+<ul *ngIf="group.child_groups" [ngClass]="openGroup?'show':'hide'">
+    <li *ngFor="let _group of group.child_groups">
+        <ai-group-item [group]="_group" [currentItem]="currentItem" (onSelectItem)="_onSelectItem($event)"
+                       (onSelectGroup)="_onSelectGroup($event)"
+                       (onSelectGroupMenu)="_onSelectGroupMenu($event)"></ai-group-item>
+    </li>
+</ul>
+
+<!-- 子数据 -->
+<ul *ngIf="group.child_items" [ngClass]="openGroup?'show':'hide'">
+    <li *ngFor="let item of group.child_items">
+        <div class="groupItem-data" [class.selected]="item === currentItem" (click)="_onSelectItem(item)">
+            <span class="text">
+                <i class="icon" [ngClass]="item.item_icon"></i>
+                {{item.item_name}}
+            </span>
+        </div>
+    </li>
+</ul>

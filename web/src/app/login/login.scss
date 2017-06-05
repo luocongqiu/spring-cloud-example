@@ -1,0 +1,40 @@
+.login-wrapper {
+    height: 100%;
+    min-height: 700px;
+    background-color: #fff !important;
+    background: url(./images/login-bg.png) no-repeat -80px 80px;
+    position: relative;
+    .logo {
+        position: absolute;
+        top: 20px;
+        left: 100px;
+    }
+    .login-form {
+        right: 80px;
+        border: 1px solid #d7d7d7;
+        width: 500px;
+        height: 400px;
+        border-radius: 5px;
+        background: $white;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        .input-group {
+            margin-bottom: 1.5rem;
+            .input-group-addon {
+                width: 2.6rem;
+            }
+        }
+        .login-submit-btn {
+            margin-top: 2rem;
+        }
+    }
+    .login-icon {
+        margin-top: 2rem;
+    }
+    .login-title {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: #bbb;
+        font-size: 16px;
+    }
+}

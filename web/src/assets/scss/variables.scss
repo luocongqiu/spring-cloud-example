@@ -1,0 +1,64 @@
+$default: #FFFFFF; // default colors for layout
+$body-bg: #F1F3F7; // default bg color
+$theme: #00A1D0;
+
+$brand-primary: $theme;
+
+$default-text: $default; // default text color layout (usually is the same as $default)
+$content-text: $default-text; // content text color on card, panels, form, etc
+$help-text: $default-text; // additional text color for hits
+
+$label-text: $default-text; // labels color
+$disabled: rgba(255, 255, 255, 0.4); // color for disabled state
+$disabled-bg: tint($disabled, 15%); // background color for disable state
+$border: rgba(0, 0, 0, 0.15); // border color
+$border-light: rgba(255, 255, 255, 0.3); // lighter version of border color (for hovers)
+$input-border: rgba(255, 255, 255, 0.6); // input border color
+$input-background: rgba(255, 255, 255, 0.1); // input border color for hover
+$dropdown-text: #7D7D7D; // dropdown text color
+
+// specific components colors
+$mail-box: whitesmoke;
+$auth-panel-background: #FFFFFF;
+$progress-background: rgba(0, 0, 0, 0.15);
+$progress-default: rgba($default-text, 0.95);
+
+// bootstrap card panel styles
+$bootstrap-panel-radius: 7px;
+$bootstrap-panel-text: #FFFFFF;
+$bootstrap-panel-bg: rgba(255, 255, 255, 0.1);
+$bootstrap-panel-header-bg: transparent;
+$bootstrap-panel-header-border: 1px solid $border-light;
+$bootstrap-panel-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+
+$active-link: #285eb8;
+$hover-link: darken($active-link, 20%);
+
+$fa-font-path: '~font-awesome/fonts';
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
+$header-bg: #222222;
+$header-hover-bg: #0DA4D3;
+
+$table-head-bg: #f3f5f7;
+
+$sidebar-width: 250px;
+$sidebar: #32323A;
+$sidebar-text: #BBBBBB;
+$sidebar-hover-color: #0DA4D3;
+$sidebar-hover-bg: #393740;
+$sidebar-active-bg: #222126;
+$sidebar-active-color: $sidebar-hover-color;
+
+$color-border-light: #e8e8e8;
+$color-btn-blue: #228ef1;
+$color-btn-operate: #47b9dd;
+$color-td-hover: #0da4d3;
+$tree-bg-black: #32323a;
+
+$color-headline: #222;
+$color-subtitle: #222;
+$color-base: #454545;

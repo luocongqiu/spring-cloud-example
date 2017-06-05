@@ -1,0 +1,36 @@
+.bg-transparent {
+  background-color: transparent;
+}
+
+.bg-theme {
+  background-color: $theme;
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.text-theme {
+  color: $theme;
+}
+
+.text-red {
+  color: red;
+}
+
+.text-link {
+  color: $link-color !important;
+}
+
+.border-theme {
+  border-color: $theme !important;
+}
+
+.border-gray {
+  border-color: $border !important;
+}
+
+.text-gray {
+  color: #A1A1A1;
+}
+

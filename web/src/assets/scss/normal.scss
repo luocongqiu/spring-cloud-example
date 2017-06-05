@@ -1,0 +1,48 @@
+html {
+  font-size: 16px;
+
+  &.lower-ie {
+    ai-app, #pre-loader {
+      display: none;
+    }
+  }
+}
+
+html, body {
+  height: 100%;
+  background-color: $body-bg;
+  color: $color-base;
+}
+
+.browser-upgrade {
+  margin: 0.2rem 0;
+  background: #CCC;
+  color: $black;
+  padding: 0.2rem 0;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  appearance: textfield;
+}
+
+ul, ol, li, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none outside none;
+}
+
+[tabindex]:focus {
+  outline: none;
+}

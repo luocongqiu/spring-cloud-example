@@ -15,8 +15,6 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
-import java.util.UUID;
-
 @Configuration
 @EnableResourceServer
 public class OAuth2Configuration extends ResourceServerConfigurerAdapter {
@@ -70,11 +68,7 @@ public class OAuth2Configuration extends ResourceServerConfigurerAdapter {
         }
 
         public void configure(HttpSecurity http) throws Exception {
-            http
-                    .requestMatchers().antMatchers(UUID.randomUUID().toString())
-                    .and()
-                    .authorizeRequests()
-                    .anyRequest().permitAll();
+            http.authorizeRequests().anyRequest().permitAll();
         }
 
 

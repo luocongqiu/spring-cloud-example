@@ -1,0 +1,63 @@
+.break {
+  white-space: normal;
+  word-break: break-all;
+}
+
+.nowrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.readonly {
+  background-color: #EEE;
+  opacity: 1;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: $color-headline;
+  font-weight: 600;
+}
+
+.error {
+  color: red;
+}
+
+.fs-lg {
+  font-size: $font-size-lg !important;
+}
+
+.fs-sm {
+  font-size: $font-size-sm !important;
+}
+
+.fs-xs {
+  font-size: $font-size-xs !important;
+}
+
+.fs-base {
+  font-size: $font-size-base !important;
+}
+
+.text-headline {
+  color: $color-headline;
+  font-size: $font-size-base;
+  font-weight: 600;
+}
+
+.text-subtitle {
+  color: $color-subtitle;
+  font-size: $font-size-sm;
+  font-weight: 500;
+}
+
+.text-base {
+  color: $color-base;
+  font-size: $font-size-sm;
+  font-weight: normal;
+  input, select, textarea {
+    color: $color-base;
+    font-size: $font-size-sm;
+    font-weight: normal;
+  }
+}

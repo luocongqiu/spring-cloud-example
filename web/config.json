@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "env": "\"dev\"",
+    "client_id": "\"root\"",
+    "client_secret": "\"root\""
+  },
+  "prod": {
+    "env": "\"prod\"",
+    "client_id": "\"root\"",
+    "client_secret": "\"root\""
+  }
+}

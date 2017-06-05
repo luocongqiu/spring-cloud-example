@@ -1,0 +1,25 @@
+@each $position in 'left', 'top', 'right', 'bottom', '' {
+
+  @each $index, $size in (1: 0.25rem, 2: 0.5rem, 3: 1rem, 4: 1.5rem) {
+
+    @if $position == '' {
+      .border-#{$index} {
+        border: #{$size} solid;
+      }
+    } @else {
+      .border-#{$position}-#{$index} {
+        border-#{$position}: #{$size} solid;
+      }
+    }
+  }
+
+  @if $position == '' {
+    .border {
+      border: 1px solid;
+    }
+  } @else {
+    .border-#{$position} {
+      border-#{$position}: 1px solid;
+    }
+  }
+}

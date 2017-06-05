@@ -1,0 +1,17 @@
+<div class="login-wrapper">
+    <img class="logo" src="./images/login-logo.png">
+    <form class="login-form v-center-in-parent" action="javascript:;" novalidate>
+        <p class="login-icon text-center"><img src="./images/logo.png"></p>
+        <p class="login-title text-center">——— 使用NT账号登录 ———</p>
+        <div class="input-group">
+            <div class="input-group-addon"><i class="icon icon-user" aria-hidden="true"></i></div>
+            <input type="text" class="form-control" placeholder="请输入NT账号" [(ngModel)]="username" name="username" />
+        </div>
+        <div class="input-group">
+            <div class="input-group-addon"><i class="icon icon-password" aria-hidden="true"></i></div>
+            <input type="password" class="form-control" placeholder="请输入密码" [(ngModel)]="password" name="password" />
+        </div>
+        <input type="submit" class="btn btn-secondary btn-block login-submit-btn" value="登录" (click)="login()" />
+        <p class="error mt-3">{{error}}</p>
+    </form>
+</div>

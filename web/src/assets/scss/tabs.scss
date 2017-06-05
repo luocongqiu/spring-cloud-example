@@ -1,0 +1,42 @@
+.nav-tabs {
+    .nav-link {
+        color: $black;
+        border-bottom-width: 2px;
+        &,
+        &:hover,
+        &.active {
+            border-color: transparent;
+        }
+        &.active {
+            background: transparent;
+            border-bottom: 2px solid $theme;
+            &,
+            &:hover {
+                color: $theme;
+            }
+        }
+        &.disabled {
+            color: #636c72;
+        }
+    }
+}
+
+.step-bar {
+    & .nav-pills .nav-link {
+        background-color: $white;
+        color: $theme;
+        border-bottom: 1px solid $theme;
+    }
+    & .nav-pills .nav-link:hover {
+        background-color: #f1f2f7;
+    }
+    & .nav-pills .nav-link.active {
+        border-left: 1px solid $theme;
+        border-right: 1px solid $theme;
+        border-top: 1px solid $theme;
+        border-bottom: none;
+    }
+    & .nav-pills .nav-link.active:hover {
+        background-color: $white;
+    }
+}

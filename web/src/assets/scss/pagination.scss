@@ -1,0 +1,18 @@
+.pagination {
+  justify-content: center;
+  padding: 1rem 0;
+  .page-item .page-link {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% !important;
+    margin: 0 8px;
+  }
+  .page-item.active .page-link {
+    background-color: $theme;
+  }
+}

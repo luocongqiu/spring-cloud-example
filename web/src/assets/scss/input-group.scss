@@ -1,0 +1,37 @@
+.input-group {
+  .input-group-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    font-size: 120%;
+    width: $input-height;
+    height: $input-height;
+    line-height: $input-height;
+    text-align: center;
+    pointer-events: none;
+    & + .form-control {
+      padding-left: $input-height;
+    }
+  }
+}
+
+.input-group-lg .input-group-icon,
+.form-group-lg .input-group-icon {
+  width: $input-height-lg;
+  height: $input-height-lg;
+  line-height: $input-height-lg;
+  & + .form-control {
+    padding-left: $input-height-lg;
+  }
+}
+
+.input-group-sm .input-group-icon,
+.form-group-sm .input-group-icon {
+  width: $input-height-sm;
+  height: $input-height-sm;
+  line-height: $input-height-sm;
+  & + .form-control {
+    padding-left: $input-height-sm;
+  }
+}

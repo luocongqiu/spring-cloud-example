@@ -1,0 +1,48 @@
+.col-form-label {
+  text-align: right;
+  padding-right: 0;
+}
+
+.border-input {
+  border: 1px solid $input-border-color;
+}
+
+::-ms-clear, ::-ms-reveal {
+  display: none;
+}
+
+@mixin form-error($size) {
+
+  &.form-error {
+
+    padding-right: $size;
+    background-size: ($size / 2) ($size / 2) !important;
+    background: $form-icon-danger no-repeat center right ($size / 4);
+
+    border: 1px solid $brand-danger;
+    &:focus {
+      border-color: $brand-danger;
+      box-shadow: $input-box-shadow, 0 0 6px lighten($brand-danger, 20%);
+    }
+  }
+}
+
+@include form-error($input-height);
+
+.form-control-sm {
+  @include form-error($input-height-sm);
+}
+
+.form-control-sm + .select.select-theme-default > .select-target {
+  padding-top: $input-padding-y-sm;
+  padding-bottom: $input-padding-y-sm;
+  font-size: $font-size-sm;
+  height: $input-line-height * $font-size-sm + $input-padding-y-sm * 2;
+}
+
+form .btn-warning {
+  background-color: #e6643b;
+  &:hover {
+    background-color: darken(#e6643b, 12%);
+  }
+}

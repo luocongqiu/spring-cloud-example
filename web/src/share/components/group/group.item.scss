@@ -1,0 +1,86 @@
+.dropdown-menu {
+  background: #32323a;
+  min-width: 80px;
+  border: 1px solid $header-hover-bg;
+  .dropdown-item {
+    color: $header-hover-bg;
+    cursor: pointer;
+    .dropdown-item-text {
+      font-size: 12px;
+      display: inline-block;
+      width: 52px;
+      border-bottom: 1px solid #ddd;
+      color: #ddd;
+    }
+    i {
+      font-size: 12px;
+      padding-right: 6px;
+      color: #ddd;
+    }
+  }
+  .dropdown-item:hover {
+    background: transparent;
+    .dropdown-item-text {
+      border-bottom: 1px solid $header-hover-bg;
+      color: $header-hover-bg;
+    }
+    i {
+      color: $header-hover-bg;
+    }
+  }
+}
+
+ul {
+  padding-left: 16px;
+}
+
+.groupItem, .groupItem-data {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  margin: 7px auto;
+  cursor: pointer;
+  .text {
+    color: #ddd;
+    font-size: $font-size-sm;
+    display: inline-block;
+    padding: 0 2px;
+    width: 100%;
+    display: inline-block;
+    padding-right: 32px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+  > a {
+    color: $color-btn-blue;
+    font-size: $font-size-sm;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    padding: 0 6px;
+    display: none;
+  }
+  > a::after {
+    display: none;
+  }
+}
+
+.groupItem:hover, .groupItem-data:hover {
+  background: #222126;
+  .text {
+    color: $color-btn-blue;
+  }
+  > a {
+    display: block;
+  }
+}
+
+.selected {
+  background: #222126;
+  .text {
+    color: $color-btn-blue;
+  }
+}

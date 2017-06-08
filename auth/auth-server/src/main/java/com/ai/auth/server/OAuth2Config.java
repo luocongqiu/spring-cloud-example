@@ -11,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 @Configuration
@@ -33,7 +34,8 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(this.authenticationManager)
-                .tokenStore(tokenStore());
+                .tokenStore(tokenStore())
+                .tokenEnhancer(tokenEnhancer());
     }
 
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
@@ -54,5 +56,9 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
         return new RedisTokenStore(this.connectionFactory);
     }
 
+    @Bean
+    public TokenEnhancer tokenEnhancer() {
+        return new CustomTokenEnhancer();
+    }
 
 }

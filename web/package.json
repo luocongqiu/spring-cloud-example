@@ -119,7 +119,7 @@
         "clear": "node config/clear.js",
         "clear:prod": "node config/clear.js --p",
         "webpack:build": "webpack --config config/webpack.vendor.js && webpack --config config/webpack.dev.js",
-        "webpack:dev": "webpack-dev-server --config config/webpack.dev.js  --progress --inline --hot --profile --port=9060",
+        "webpack:dev": "webpack-dev-server --config config/webpack.dev.js  --progress --inline --hot --profile --port=9070",
         "webpack:prod": "yarn run clear:prod && webpack -p --config config/webpack.vendor.js && webpack -p --config config/webpack.prod.js",
         "test": "yarn run lint && karma start src/test/javascript/karma.conf.js",
         "test:watch": "karma start --watch",

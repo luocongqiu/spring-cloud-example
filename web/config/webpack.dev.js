@@ -22,11 +22,11 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
         contentBase: [path.resolve(`${config.dist}`), path.resolve('data')],
         proxy: {
             '/aici': {
-                target: 'http://10.1.234.50:37300',
+                target: 'http://localhost:8080',
                 secure: false
             },
             '/uaa': {
-                target: 'http://10.1.234.50:37300',
+                target: 'http://localhost:8080',
                 secure: false
             }
         },
@@ -56,7 +56,7 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 9000,
-            proxy: 'http://localhost:9060'
+            proxy: 'http://localhost:9070'
         }, {
             reload: false
         }),

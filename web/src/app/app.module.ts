@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RegisterModule } from 'app/register/register.module';
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { ShareModule } from 'share';
 import { CoreModule } from '../core/core.module';
@@ -24,6 +25,7 @@ import { MainModule } from './main/main.module';
         NgbModule.forRoot(),
         Ng2Webstorage,
         LoginModule,
+        RegisterModule,
         MainModule,
         routing
     ],

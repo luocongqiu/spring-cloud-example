@@ -1,7 +1,6 @@
 buildscript {
 
     repositories {
-        mavenLocal()
         maven {
             url 'http://maven.aliyun.com/nexus/content/groups/public/'
         }
@@ -21,7 +20,6 @@ buildscript {
 allprojects {
 
     repositories {
-        mavenLocal()
         maven {
             url 'http://maven.aliyun.com/nexus/content/groups/public/'
         }
@@ -47,8 +45,15 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR3"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR5"
             mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+        }
+
+        dependencies {
+            dependency "de.codecentric:spring-boot-admin-server:${springBootAdminVersion}"
+            dependency "de.codecentric:spring-boot-admin-server-ui:${springBootAdminVersion}"
+            dependency "de.codecentric:spring-boot-admin-server-ui-hystrix:${springBootAdminVersion}"
+            dependency "net.logstash.logback:logstash-logback-encoder:${logstashLogbackVersion}"
         }
     }
 
@@ -88,7 +93,7 @@ subprojects {
             compile 'org.springframework.boot:spring-boot-starter-actuator'
 
             compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
-            compile 'org.springframework.boot:spring-boot-starter-redis'
+            compile 'org.springframework.boot:spring-boot-starter-data-redis'
             compile "org.springframework.boot:spring-boot-devtools"
 
             compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${springBootMybatisVersion}"
@@ -97,7 +102,7 @@ subprojects {
         }
     }
 
-    if(it.name.endsWith("-client")) {
+    if (it.name.endsWith("-client")) {
         dependencies {
             compile 'org.springframework.cloud:spring-cloud-starter-feign'
         }

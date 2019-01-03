@@ -1,7 +1,8 @@
 rootProject.name = 'spring-cloud-example'
 include "core"
-include "auth:auth-resource"
-include "auth:auth-server"
+include "auth"
+include "zipkin"
+include "monitor"
 include "config-server"
 include "eureka-server"
 include "api-gateway"

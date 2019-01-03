@@ -1,0 +1,8 @@
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-config'
+    compile 'de.codecentric:spring-boot-admin-server'
+    compile 'de.codecentric:spring-boot-admin-server-ui'
+    compile 'de.codecentric:spring-boot-admin-server-ui-hystrix'
+//    compile 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+}

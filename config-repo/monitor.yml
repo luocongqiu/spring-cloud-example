@@ -1,0 +1,10 @@
+server:
+  port: 9040
+
+spring:
+  rabbitmq:
+    host: localhost
+boot:
+  admin:
+    routes:
+      endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream

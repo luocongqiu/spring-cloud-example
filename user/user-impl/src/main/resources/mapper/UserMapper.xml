@@ -3,15 +3,15 @@
 <mapper namespace="com.ai.user.repository.UserRepository">
 
     <resultMap id="entity" type="com.ai.user.domain.User">
-        <id column="ID" property="id" jdbcType="INTEGER" />
-        <result column="NAME" property="name" jdbcType="VARCHAR" />
+        <id column="user_id" property="id" jdbcType="INTEGER" />
+        <result column="user_name" property="name" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="findById" resultMap="entity" parameterType="integer">
-        SELECT * FROM SYS_USER WHERE ID = #{id, jdbcType=INTEGER}
+        SELECT * FROM sys_user WHERE user_id = #{id, jdbcType=INTEGER}
     </select>
 
     <select id="findAll" resultType="com.ai.user.domain.User">
-        SELECT * FROM SYS_USER;
+        SELECT * FROM sys_user;
     </select>
 </mapper>

@@ -1,18 +1,7 @@
-subprojects {
-
-    dependencies {
-        compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
-        compile 'org.springframework.boot:spring-boot-starter-redis'
-    }
-}
-
-project(":auth:auth-server") {
-    apply plugin: 'org.springframework.boot'
-
-    dependencies {
-        compile 'org.springframework.cloud:spring-cloud-starter-config'
-        compile 'org.springframework.cloud:spring-cloud-starter-eureka'
-        testCompile "junit:junit:${junitVersion}"
-        testCompile 'org.springframework.boot:spring-boot-starter-test'
-    }
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'org.springframework.security:spring-security-jwt'
+    compile 'org.springframework.security.oauth:spring-security-oauth2'
+    compile 'org.springframework.boot:spring-boot-starter-data-redis'
 }

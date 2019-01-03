@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public interface UserResource {
 
     @GetMapping("/{id}")

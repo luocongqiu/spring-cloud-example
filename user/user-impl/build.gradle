@@ -1,5 +1,6 @@
 dependencies {
-    compile project(":auth:auth-resource")
+    compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
+
     compile project(":core")
     compile project(":user:user-api")
 }

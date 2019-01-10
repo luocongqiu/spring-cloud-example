@@ -1,5 +1,7 @@
 # spring-cloud-example
-用spring cloud 构建微服务架构 spring cloud + mybatis + mapstruct + lombok
+1、spring cloud 构建微服务架构 spring cloud + mybatis + mapstruct + lombok  
+2、集成zipkin链路跟踪  
+3、集成elk做日志存储和分析
 
 ## api-gateway
 统一对外接口 路由所有服务

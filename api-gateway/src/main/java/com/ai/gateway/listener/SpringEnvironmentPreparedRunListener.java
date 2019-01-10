@@ -22,7 +22,7 @@ public class SpringEnvironmentPreparedRunListener implements SpringApplicationRu
     }
 
     public void starting() {
-        log.info("start application[{}], start args[{}]", application.getMainApplicationClass().getName(), Arrays.toString(this.args));
+        log.info("start application[{}], start args[{}]", application.getMainApplicationClass() != null ? application.getMainApplicationClass().getName() : "", Arrays.toString(this.args));
     }
 
     public void environmentPrepared(ConfigurableEnvironment environment) {

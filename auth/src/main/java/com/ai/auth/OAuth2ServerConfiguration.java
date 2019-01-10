@@ -59,11 +59,6 @@ public class OAuth2ServerConfiguration extends AuthorizationServerConfigurerAdap
                 .autoApprove(true);
     }
 
-//    @Bean
-//    public RedisTokenStore tokenStore() {
-//        return new RedisTokenStore(this.connectionFactory);
-//    }
-
     @Bean
     public TokenStore tokenStore() {
         return new JwtTokenStore(accessTokenConverter());

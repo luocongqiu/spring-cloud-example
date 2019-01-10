@@ -64,3 +64,18 @@ logging:
 test:
   fresh: 6
 ```
+数据库
+```
+spring:
+ datasource:
+   type: com.zaxxer.hikari.HikariDataSource
+   url: jdbc:mysql://localhost/dbName?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+   username: root
+   password: root
+   driver-class-name: com.mysql.jdbc.Driver
+```
+logstash
+```
+logstash:
+ destination: 127.0.0.1:4560
+```

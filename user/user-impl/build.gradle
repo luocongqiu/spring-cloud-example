@@ -1,5 +1,6 @@
 dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-zipkin'
+    compile 'net.logstash.logback:logstash-logback-encoder'
 
     compile project(":core")
     compile project(":user:user-api")

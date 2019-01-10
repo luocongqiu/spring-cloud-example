@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="application-name" source="spring.application.name" />
+    <springProperty scope="context" name="destination" source="logstash.destination" />
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${destination}</destination>
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"application-name":"${application-name}"}</customFields>
+        </encoder>
+    </appender>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <root level="INFO">
+        <appender-ref ref="LOGSTASH" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>

@@ -92,10 +92,6 @@ subprojects {
             compile 'org.springframework.cloud:spring-cloud-starter-hystrix'
             compile 'org.springframework.boot:spring-boot-starter-actuator'
 
-            compile 'org.springframework.cloud:spring-cloud-starter-oauth2'
-            compile 'org.springframework.boot:spring-boot-starter-data-redis'
-            compile "org.springframework.boot:spring-boot-devtools"
-
             compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${springBootMybatisVersion}"
             compile 'com.zaxxer:HikariCP'
             compile "mysql:mysql-connector-java:${mysqlVersion}"

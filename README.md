@@ -18,7 +18,7 @@ jwt权限控制
 ## monitor
 spring boot admin 监控中心
 ## zipkin
-链路中心
+链路跟踪
 
 ## 配置文件修改
 修改配置文件config-repo/application.yml 中的数据库配置项和logstash地址

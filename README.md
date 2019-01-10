@@ -23,13 +23,11 @@ spring boot admin 监控中心
 
 ## 配置文件修改
 修改配置文件config-repo/application.yml 中的数据库配置项和logstash地址
-<pre>
-    <code>
+```
 eureka:
  client:
    serviceUrl:
      defaultZone: http://localhost:8761/eureka/
-<font color=#FF4500>
 spring:
  datasource:
    type: com.zaxxer.hikari.HikariDataSource
@@ -37,7 +35,6 @@ spring:
    username: root
    password: root
    driver-class-name: com.mysql.jdbc.Driver
-</font>
  zipkin:
    base-url: http://localhost:9411
  sleuth:
@@ -55,10 +52,8 @@ management:
    enabled: false
 mybatis:
  mapper-locations: classpath*:mapper/*Mapper.xml
-<font color=#FF4500>
 logstash:
  destination: 127.0.0.1:4560
-</font>
 logging:
  config: classpath:logback-delay.xml
  path: logs
@@ -68,5 +63,4 @@ logging:
    
 test:
   fresh: 6
-  <code>
-<pre>
+```

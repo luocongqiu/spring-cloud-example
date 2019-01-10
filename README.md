@@ -80,3 +80,55 @@ logstash:
 
 ## 启动
 最先启动这两个服务 config-server -> eureka-server -> 最后启动另外的服务
+
+## monitor
+
+### applications
+![](images/applications.png)
+
+### details
+![](images/details.png)
+
+### log
+![](images/log.png)
+
+### Metrics
+![](images/Metrics.png)
+
+### Environment
+![](images/Environment.png)
+
+### Logging
+![](images/Logging.png)
+
+### Threads
+![](images/Threads.png)
+
+### Audit
+![](images/Audit.png)
+
+### Trace
+![](images/Trace.png)
+
+
+## 链路跟踪
+
+### Traces
+![](images/Traces.png)
+
+### Detail
+![](images/Trace-Detail.png)
+
+### More
+![](images/More.png)
+
+## ELK
+
+### kibana
+![](images/kibana.png)
+
+### 日志
+![](images/日志.png)
+
+### 根据链路跟踪traceId查询这次请求涉及所有服务的日志
+![](images/logs.png)

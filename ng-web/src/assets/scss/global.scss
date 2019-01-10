@@ -1,6 +1,8 @@
 @import "mixins";
-@import "variables";
+@import "~animate.css";
+@import "animate";
 @import "iconfont";
+@import "buttons";
 @import "dropdown";
 @import "layout";
 @import "page-loader";
@@ -14,13 +16,12 @@
 @import "size";
 @import "toastr";
 @import "normal";
-@import "custrom-forms";
 @import "tooltip";
 @import "tabs";
-@import "../../share/scroll-bar/scss/scroll-bar";
-@import "../../share/directives/select/select";
+@import "scroll";
 @import "../../core/block/block";
 @import "pagination";
 @import "font-size";
+@import "media";
 
 

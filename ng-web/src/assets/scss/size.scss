@@ -23,3 +23,34 @@
     }
   }
 }
+
+@for $size from 0 through 12 {
+  .w-r-#{$size} {
+    width: #{$size}rem !important;
+  }
+
+  .mwr-#{$size} {
+    min-width: #{$size}rem !important;
+  }
+
+  .h-r-#{$size} {
+    height: #{$size}rem !important;
+  }
+
+  .l-#{$size} {
+    left: #{$size}rem !important;
+  }
+
+  .t-#{$size} {
+    top: #{$size}rem !important;
+  }
+
+  .r-#{$size} {
+    right: #{$size}rem !important;
+  }
+
+  .b-#{$size} {
+    bottom: #{$size}rem !important;
+  }
+
+}

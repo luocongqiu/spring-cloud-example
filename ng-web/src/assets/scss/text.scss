@@ -1,6 +1,6 @@
 .break {
-  white-space: normal;
-  word-break: break-all;
+  white-space: normal !important;
+  word-break: break-all !important;
 }
 
 .nowrap {
@@ -9,18 +9,37 @@
   overflow: hidden;
 }
 
+.text-overflow-clip {
+  text-overflow: clip !important;
+}
+
 .readonly {
   background-color: #EEE;
   opacity: 1;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   color: $color-headline;
   font-weight: 600;
 }
 
 .error {
   color: red;
+}
+
+.fs-bg {
+  font-size: $font-size-bg !important;
 }
 
 .fs-lg {
@@ -39,6 +58,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-size: $font-size-base !important;
 }
 
+.fs-2 {
+  font-size: $font-size-base * 2 !important;
+}
+
 .text-headline {
   color: $color-headline;
   font-size: $font-size-base;
@@ -55,9 +78,20 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   color: $color-base;
   font-size: $font-size-sm;
   font-weight: normal;
-  input, select, textarea {
+
+  input,
+  select,
+  textarea {
     color: $color-base;
     font-size: $font-size-sm;
     font-weight: normal;
   }
+}
+
+textarea {
+  resize: none;
+}
+
+.text-underline {
+  text-decoration: underline !important;
 }

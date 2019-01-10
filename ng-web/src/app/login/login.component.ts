@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
+    selector: 'a-login',
     templateUrl: 'login.component.html',
     styleUrls: ['login.scss']
 })

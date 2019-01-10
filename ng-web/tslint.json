@@ -83,13 +83,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "ai",
+      "a",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "ai",
+      "a",
       "kebab-case"
     ],
     "use-input-property-decorator": true,

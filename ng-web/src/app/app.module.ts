@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegisterModule } from 'app/register/register.module';
-import { Ng2Webstorage } from 'ng2-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { ShareModule } from 'share';
 import { CoreModule } from '../core/core.module';
 import { AppComponent } from './app.component';
@@ -18,15 +18,15 @@ import { MainModule } from './main/main.module';
     imports: [
         BrowserModule,
         CommonModule,
-        HttpModule,
+        HttpClientModule,
         FormsModule,
-        ShareModule.forRoot(),
-        CoreModule.forRoot(),
-        NgbModule.forRoot(),
-        Ng2Webstorage,
+        ShareModule,
+        CoreModule,
+        NgbModule,
         LoginModule,
         RegisterModule,
         MainModule,
+        NgxWebstorageModule.forRoot(),
         routing
     ],
     declarations: [

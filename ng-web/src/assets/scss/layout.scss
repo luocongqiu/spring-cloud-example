@@ -41,7 +41,19 @@ a, a:hover {
 }
 
 .overflow-hidden {
-  overflow: hidden;
+  overflow: hidden !important;
+}
+
+.overflow-scroll {
+  overflow: scroll !important;
+}
+
+.overflow-auto {
+  overflow: auto !important;
+}
+
+.overflow-visible {
+  overflow: visible !important;
 }
 
 .show {
@@ -56,20 +68,51 @@ a, a:hover {
   flex: 1;
 }
 
-.rolate90 {
-  transform: rotate(90deg);
+.flex-auto {
+  flex: 0 0 auto;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.h-auto {
+  height: auto;
 }
 
 .break-all {
   word-break: break-all;
 }
 
-.d-inline, .d-inline-block, .d-block, .d-table, .d-table-cell, .d-flex, .d-inline-flex {
-  &[hidden] {
+.d-inline,
+.d-inline-block,
+.d-block,
+.d-table,
+.d-table-cell,
+.d-flex,
+.d-inline-flex {
+  &[hidden], &.d-none {
     display: none !important;
   }
 }
-.shadow-1{
-  border: 1px solid $color-border-light !important;
-  box-shadow: 0 0 2px $color-border-light;
+
+.d-fixed {
+  position: fixed;
+  z-index: 10;
+}
+
+.block {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+  display: block;
+}
+
+.container-fluid {
+  padding: 1rem;
+}
+
+@media (min-width: 1400px) {
+  .container {
+    max-width: 80%;
+  }
 }

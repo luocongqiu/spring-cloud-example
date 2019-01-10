@@ -1,5 +1,21 @@
-.table-sm th, .table-sm td {
+.table-sm th,
+.table-sm td {
   padding: 0.5rem 1rem;
+}
+
+.table-bordered thead {
+  th, td {
+    border-bottom-width: 1px;
+  }
+}
+
+.table thead th {
+  border-bottom-width: 1px;
+}
+
+.thead-default th {
+  color: #495057;
+  background-color: $table-head-bg;
 }
 
 .table-sm td {
@@ -16,14 +32,22 @@
   }
 }
 
-.table, .custom-table {
+.table {
+  td, th {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
   label {
     margin-bottom: 0;
   }
 }
 
 .table.border-0 {
-  th, td {
+  th,
+  td {
     border: none;
   }
 }
@@ -32,82 +56,36 @@
   table-layout: fixed;
 }
 
-.custom-table {
-
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: $spacer;
-  background-color: $table-bg;
-
-  .table-header, .table-row {
-    display: flex;
-  }
-
-  .table-header {
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
-  }
-
-  .table-row:not(:last-child), .table-row.row-border {
-    border-bottom: $table-border-width solid $table-border-color;
-  }
-
-  .table-cell {
-    flex: 1;
-    padding: $table-cell-padding 1rem;
-    box-sizing: border-box;
-  }
-
-  .table-cell {
-
-    .cell-2 {
-      flex: 2;
+.table-hover {
+  & > tbody tr:hover {
+    td {
+      background-color: #f8f9fa;
     }
-
-    .cell-3 {
-      flex: 3;
-    }
-
-    .cell-4 {
-      flex: 4;
-    }
-
-    &.cell-auto {
-      flex: none;
-    }
-  }
-
-  &.table-sm {
-    .table-cell {
-      padding: $table-sm-cell-padding 1rem;
-    }
-
-    .table-row .table-cell {
-      font-size: $font-size-sm;
-    }
-  }
-
-  &.table-bordered {
-    border: 1px solid $table-border-color;
-
-    .table-cell:not(:last-child) {
-      border-right: 1px solid $table-border-color;
-    }
-  }
-
-  &.table-hover .table-row:hover {
-    background-color: $table-bg-hover;
   }
 }
 
-th, .table-header .table-cell {
+th {
   font-weight: normal;
   color: $color-subtitle;
 }
 
-.table-header.thead-default {
-  border-bottom: none;
+thead.thead-theme th {
+  background-color: #daf5ef;
+  border: none;
+
+  &:not(:first-child) {
+    border-left: 1px solid white;
+  }
+
+  border-bottom-width: 1px;
 }
 
-.table-nodata {
-  font-size: 12px;
+.table .drag-enter {
+  border: 1px solid $theme;
+  box-shadow: 0 0 1rem $theme;
+  margin: 0.5rem 0;
+
+  & > td {
+    padding: 1.2rem 0;
+  }
 }

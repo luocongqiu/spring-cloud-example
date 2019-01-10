@@ -1,25 +1,18 @@
 .bg-transparent {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .bg-theme {
-  background-color: $theme;
-}
-
-.bg-white {
-  background-color: $white;
+  background-color: $theme !important;
 }
 
 .text-theme {
-  color: $theme;
-}
-
-.text-red {
-  color: red;
+  color: $theme !important;
 }
 
 .text-link {
   color: $link-color !important;
+  text-decoration: underline !important;
 }
 
 .border-theme {
@@ -30,7 +23,31 @@
   border-color: $border !important;
 }
 
+.bg-body {
+  background-color: $body-bg !important;
+}
+
 .text-gray {
   color: #A1A1A1;
 }
 
+@each $key, $color in $colors {
+  .text-#{$key} {
+    color: $color !important;
+  }
+  .bg-#{$key} {
+    background-color: $color !important;
+  }
+  .border-#{$key} {
+    border-color: $color !important;
+  }
+}
+
+@each $key, $color in $grays {
+  .bg-gray-#{$key} {
+    background-color: $color !important;
+  }
+  .text-gray-#{$key} {
+    color: $color !important;
+  }
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 @Component({
-    selector: 'ai-main',
+    selector: 'a-main',
     templateUrl: 'main.component.html',
     styleUrls: ['main.scss']
 })

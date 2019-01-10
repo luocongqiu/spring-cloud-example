@@ -1,21 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgbModalConfig, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+
+import { configModal, configPage } from './app.config';
+
 @Component({
-    selector: 'ai-app',
-    templateUrl: './app.component.html'
+    selector: 'a-app',
+    templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-
-    private _preLoaderElement: HTMLElement;
-
-    constructor() {
-        this._preLoaderElement = document.getElementById('pre-loader');
-        this._hidePreLoader();
+    constructor(private pageConfig: NgbPaginationConfig,
+                private modalConfig: NgbModalConfig) {
     }
 
-    private _hidePreLoader() {
-        setTimeout(() => {
-            this._preLoaderElement.style.display = 'none';
-        }, 1000);
+    ngOnInit(): void {
+        configPage(this.pageConfig);
+        configModal(this.modalConfig);
     }
 }

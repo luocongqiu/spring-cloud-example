@@ -1,48 +1,78 @@
-.col-form-label {
-  text-align: right;
+.col-form-label, .form-inline .col-form-label {
   padding-right: 0;
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  &.text-left {
+    justify-content: flex-start !important;
+  }
+  &.text-center {
+    justify-content: center !important;
+  }
+  &.text-right {
+    justify-content: flex-end !important;
+  }
+}
+
+:focus {
+  outline: none;
 }
 
 .border-input {
   border: 1px solid $input-border-color;
 }
 
-::-ms-clear, ::-ms-reveal {
+::-ms-clear,
+::-ms-reveal {
   display: none;
 }
 
-@mixin form-error($size) {
-
-  &.form-error {
-
-    padding-right: $size;
-    background-size: ($size / 2) ($size / 2) !important;
-    background: $form-icon-danger no-repeat center right ($size / 4);
-
-    border: 1px solid $brand-danger;
-    &:focus {
-      border-color: $brand-danger;
-      box-shadow: $input-box-shadow, 0 0 6px lighten($brand-danger, 20%);
-    }
+form .btn-warning {
+  background-color: #e6643b !important;
+  border-color: #e6643b !important;
+  &:hover {
+    background-color: darken(#e6643b, 12%) !important;
   }
 }
 
-@include form-error($input-height);
-
-.form-control-sm {
-  @include form-error($input-height-sm);
+form .autocomplete-disabled {
+  position: absolute !important;
+  left: -10000px !important;
+  top: -10000px !important;
 }
 
-.form-control-sm + .select.select-theme-default > .select-target {
-  padding-top: $input-padding-y-sm;
-  padding-bottom: $input-padding-y-sm;
-  font-size: $font-size-sm;
-  height: $input-line-height * $font-size-sm + $input-padding-y-sm * 2;
+.form-control:disabled:focus,
+.form-control[readonly]:focus {
+  border: 1px solid $input-border-color;
 }
 
-form .btn-warning {
-  background-color: #e6643b;
-  &:hover {
-    background-color: darken(#e6643b, 12%);
+.custom-control-input {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  &:focus ~ .custom-control-label::before {
+    box-shadow: none;
+  }
+}
+
+.file-import-btn {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  & ~ .input-group-prepend {
+    background-color: #e9ecef;
+  }
+
+  &:focus {
+    box-shadow: none;
   }
 }

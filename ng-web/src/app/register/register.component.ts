@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
-    selector: 'ai-register',
+    selector: 'a-register',
     templateUrl: 'register.component.html',
     styleUrls: ['register.scss']
 })

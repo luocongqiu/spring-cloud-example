@@ -1,25 +1,24 @@
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Headers, RequestMethod, Response, ResponseOptions } from '@angular/http';
-import { HeaderMessage } from 'app/app.constants';
-import { Observable } from 'rxjs/Observable';
-import { Alert, InterceptedRequest, Interceptor } from 'share';
+import { Headers } from 'app/app.constants';
+import { EMPTY, from, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Alert } from 'share';
 
-@Injectable()
-export class DelInterceptor implements Interceptor {
+@Injectable({ providedIn: 'root' })
+export class DelInterceptor implements HttpInterceptor {
 
-    request(request: InterceptedRequest): Observable<InterceptedRequest> | InterceptedRequest {
-        if (request.options.method === RequestMethod.Delete) {
-            let message = request.options.headers.get(HeaderMessage.DELETE_MESSAGE);
-            request.options.headers.delete(HeaderMessage.DELETE_MESSAGE);
-            return Observable.fromPromise(Alert.confirm(message || '确定删除？')).catch(() => {
-                return Observable.throw(new Response(new ResponseOptions({
-                    body: null,
-                    status: 0,
-                    statusText: 'cancelled',
-                    headers: new Headers()
-                })));
-            }).mergeMap(() => Observable.of(request));
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if (req.method !== 'DELETE') {
+            return next.handle(req);
         }
-        return request;
+
+        return from(Alert.confirm(req.headers.get(Headers.DELETE) || '确定删除？')).pipe(
+            switchMap<any, any>(res => {
+                if (res.dismiss === 'cancel') {
+                    return EMPTY;
+                }
+                return next.handle(req.clone({ headers: req.headers.delete(Headers.DELETE) }));
+            }));
     }
 }

@@ -1,0 +1,35 @@
+.btn-secondary {
+  @include button-variant(map_get($theme_colors, 'secondary'), $gray-400);
+}
+
+.btn {
+  border-radius: 5px;
+  &,
+  &:hover,
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-warning {
+  &,
+  &:hover {
+    color: $white;
+  }
+}
+
+.clear-btn {
+  outline: none;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+  &,
+  &:active {
+    border-style: none;
+  }
+}
+
+.br-0 {
+  border-radius: 0 !important;
+}

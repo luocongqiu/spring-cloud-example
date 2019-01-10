@@ -1,14 +1,12 @@
-
-.has-sidebar {
-  padding-left: $sidebar-width + 15px;
-}
-
 .sidebar {
   width: $sidebar-width;
-  position: fixed;
-  top: $font-size-base * $line-height-base + 2rem;
   bottom: 0;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
   background-color: $sidebar;
   color: $sidebar-text;
+}
+
+.resize-line {
+  width: 5px;
+  cursor: col-resize;
+  background-color: $body-bg;
 }

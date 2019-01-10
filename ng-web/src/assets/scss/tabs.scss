@@ -1,42 +1,55 @@
 .nav-tabs {
-    .nav-link {
-        color: $black;
-        border-bottom-width: 2px;
-        &,
-        &:hover,
-        &.active {
-            border-color: transparent;
-        }
-        &.active {
-            background: transparent;
-            border-bottom: 2px solid $theme;
-            &,
-            &:hover {
-                color: $theme;
-            }
-        }
-        &.disabled {
-            color: #636c72;
-        }
+  .nav-link {
+    color: $black;
+    border-bottom-width: 2px;
+
+    &,
+    &:hover,
+    &.active {
+      border-color: transparent;
     }
+
+    &.active {
+      background: transparent;
+      border-bottom: 2px solid $theme;
+
+      &,
+      &:hover {
+        color: $theme;
+      }
+    }
+
+    &.disabled {
+      color: #636c72;
+    }
+  }
+
+
+  &.tabs-vertical {
+    flex-direction: column;
+    height: 100%;
+
+    .nav-link {
+      width: 3rem;
+      border-bottom-width: 0;
+      border-right-width: 2px;
+
+      &.active {
+        border-bottom: none;
+        border-right: 2px solid $theme;
+      }
+    }
+  }
+
 }
 
-.step-bar {
-    & .nav-pills .nav-link {
-        background-color: $white;
-        color: $theme;
-        border-bottom: 1px solid $theme;
+.nav-item.error {
+  .active {
+    color: red;
+    border-bottom-color: red;
+
+    &:hover {
+      color: red;
     }
-    & .nav-pills .nav-link:hover {
-        background-color: #f1f2f7;
-    }
-    & .nav-pills .nav-link.active {
-        border-left: 1px solid $theme;
-        border-right: 1px solid $theme;
-        border-top: 1px solid $theme;
-        border-bottom: none;
-    }
-    & .nav-pills .nav-link.active:hover {
-        background-color: $white;
-    }
+  }
 }

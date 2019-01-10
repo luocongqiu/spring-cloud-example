@@ -1,12 +1,4 @@
-import { enableProdMode } from '@angular/core';
-import { DEBUG_INFO_ENABLED } from './app.constants';
-
-export function prodConfig() {
-    // disable debug data on prod profile to improve performance
-    if (!DEBUG_INFO_ENABLED) {
-        enableProdMode();
-    }
-}
+import { NgbModalConfig, NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export function globalConfig() {
     configToastr();
@@ -17,4 +9,19 @@ function configToastr() {
     toastr.options.timeOut = 2000;
     toastr.options.progressBar = true;
     toastr.options.preventDuplicates = true;
+}
+
+export function configPage(config: NgbPaginationConfig): void {
+    config.maxSize = 5;
+    config.rotate = true;
+    config.disabled = false;
+    config.boundaryLinks = false;
+    config.directionLinks = true;
+    config.ellipses = true;
+    config.pageSize = 10;
+    config.size = 'sm';
+}
+
+export function configModal(config: NgbModalConfig) {
+    config.backdrop = 'static';
 }

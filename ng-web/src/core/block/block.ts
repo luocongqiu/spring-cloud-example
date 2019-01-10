@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay } from 'share';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class Block {
 
     private defaultMessage = 'Loading ...';
@@ -21,10 +21,10 @@ export class Block {
     }
 
     private initBlock(): void {
-        this.container = $(document).find('.block-container');
+        this.container = $('.block-container');
         if (this.container.length === 0) {
             $('body').append(this.element);
-            this.container = $(document).find('.block-container');
+            this.container = $('.block-container');
         }
     }
 
@@ -57,6 +57,13 @@ export class Block {
             this.container.find('.block-message').text(this.defaultMessage);
             this.container.removeClass('show');
         }
+    }
+
+    hideAll(): void {
+        this.messages.length = 0;
+        this.container.removeClass('empty');
+        this.container.find('.block-message').text(this.defaultMessage);
+        this.container.removeClass('show');
     }
 
 }

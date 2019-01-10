@@ -1,32 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Block } from './block/block';
+import { NgbDatepickerI18n, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlockInterceptor } from './block/block.interceptor';
-import { CommonInterceptor, interceptor } from './interceptor';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { DelInterceptor } from './interceptor/del.interceptor';
-import { pageConfig } from './page/page.config';
-import { AuthGuardService, ProductGuardService, requestOptionsProvider } from './providers';
+import { ErrorInterceptor } from './interceptor/Error.interceptor';
+import { IslamicCivilI18n } from './providers';
 
-const COMPONENTS = [
-    // SideBarComponent,
-    // MenuItemComponent
-];
-
-const SERVICES = [
-    requestOptionsProvider,
-    interceptor,
-    DelInterceptor,
-    CommonInterceptor,
-    AuthInterceptor,
-    pageConfig,
-    AuthGuardService,
-    ProductGuardService,
-    Block,
-    BlockInterceptor
-];
+const COMPONENTS = [];
 
 @NgModule({
     imports: [
@@ -40,12 +23,13 @@ const SERVICES = [
     declarations: [
         ...COMPONENTS
     ],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: DelInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: BlockInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {provide: NgbDatepickerI18n, useClass: IslamicCivilI18n}
+    ]
 })
 export class CoreModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: CoreModule,
-            providers: [...SERVICES]
-        };
-    }
 }

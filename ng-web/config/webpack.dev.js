@@ -1,32 +1,24 @@
-const webpack = require('webpack');
-const path = require('path');
 const commonConfig = require('./webpack.common.js');
-const WriteFilePlugin = require('write-file-webpack-plugin');
 const webpackMerge = require('webpack-merge');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ENV = 'dev';
-const execSync = require('child_process').execSync;
-const fs = require('fs');
-const ddlPath = './dll/vendor.json';
-const config = require('./config');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-if (!fs.existsSync(ddlPath)) {
-    execSync('webpack --config config/webpack.vendor.js');
-}
+const helpers = require('./helpers');
 
-module.exports = webpackMerge(commonConfig({env: ENV}), {
-    devtool: 'source-map',
+module.exports = webpackMerge(commonConfig({ env: 'dev' }), {
+    mode: 'development',
+    devtool: 'cheap-module-source-map',
     devServer: {
-        contentBase: [path.resolve(`${config.dist}`), path.resolve('data')],
+        contentBase: [helpers.root(`.tmp`)],
         proxy: {
             '/aici': {
-                target: 'http://localhost:8080',
+                target: 'http://10.1.234.52',
                 secure: false
             },
-            '/uaa': {
-                target: 'http://localhost:8080',
+            '/comp': {
+                target: 'http://10.1.234.52',
                 secure: false
             }
         },
@@ -37,18 +29,84 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
         }
     },
     output: {
-        path: path.resolve(`${config.dist}`),
+        path: helpers.root('.tmp'),
         filename: '[name].bundle.js',
-        chunkFilename: '[id].chunk.js'
+        chunkFilename: '[id].chunk.js',
+        sourceMapFilename: '[file].map'
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: [
-                    'tslint-loader'
-                ],
-                exclude: ['node_modules', /reflect-metadata/, /rxjs/]
+                enforce: 'pre',
+                loaders: 'tslint-loader',
+                exclude: [/@angular/, /reflect-metadata/, /rxjs/]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'to-string-loader',
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: helpers.root('config/sass-resources.scss')
+                        }
+                    }],
+                exclude: /(vendor\.scss|global\.scss)/
+            },
+            {
+                test: /(global\.scss)/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: helpers.root('config/sass-resources.scss')
+                        }
+                    }
+                ]
+            },
+            {
+                test: /(vendor\.scss)/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: { sourceMap: true }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: { sourceMap: true }
+                    }
+                ]
             }
         ]
     },
@@ -56,28 +114,18 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 9000,
-            proxy: 'http://localhost:9070'
+            proxy: 'http://localhost:9060'
         }, {
             reload: false
         }),
-        new CopyWebpackPlugin([
-            {
-                context: path.resolve(`${config.dllPath}/assets/`),
-                from: '**/*',
-                to: path.resolve(`${config.dist}/assets/`)
-            },
-            {
-                context: path.resolve(`${config.dllPath}`),
-                from: '*.map',
-                to: path.resolve(`${config.dist}`)
-            }
-        ]),
-        new ExtractTextPlugin('styles.css'),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new WriteFilePlugin(),
-        new webpack.WatchIgnorePlugin([
-            path.resolve('./src/test'),
-        ])
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        }),
+        new NamedModulesPlugin(),
+        new LoaderOptionsPlugin({
+            debug: true,
+            options: {}
+        })
     ]
 });

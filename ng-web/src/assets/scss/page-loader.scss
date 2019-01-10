@@ -25,7 +25,7 @@
     margin: -75px 0 0 -75px;
     border-radius: 50%;
     border: 3px solid transparent;
-    border-top-color: $brand-danger;
+    border-top-color: $red;
     transform: translate3d(0, 0, 0);
     animation: spin 2s linear infinite;
     &:before {
@@ -37,7 +37,7 @@
       bottom: 5px;
       border-radius: 50%;
       border: 3px solid transparent;
-      border-top-color: $brand-primary;
+      border-top-color: $theme;
       animation: spin 3s linear infinite;
     }
     &:after {
@@ -49,7 +49,7 @@
       bottom: 15px;
       border-radius: 50%;
       border: 3px solid transparent;
-      border-top-color: $brand-warning;
+      border-top-color: $yellow;
       animation: spin 1.5s linear infinite;
     }
   }

@@ -1,51 +1,75 @@
 const commonConfig = require('./webpack.common.js');
 const webpackMerge = require('webpack-merge');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const OptimizeJsPlugin = require('optimize-js-plugin');
-const path = require('path');
+const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin');
 
-const ENV = 'prod';
+const helpers = require('./helpers');
 
-module.exports = webpackMerge(commonConfig({env: ENV}), {
+module.exports = webpackMerge(commonConfig({
+    env: 'prod',
+    metadata: {
+        HMR: false,
+        AOT: true,
+        WATCH: false,
+        envFileSuffix: 'prod'
+    }
+}), {
+    mode: 'production',
     output: {
-        path: path.resolve(__dirname, '../dist'),
+        path: helpers.root('dist'),
         filename: '[chunkhash].[name].bundle.js',
         chunkFilename: '[chunkhash].[id].chunk.js'
     },
-    plugins: [
-        new OptimizeJsPlugin({
-            sourceMap: false
-        }),
-        new ExtractTextPlugin('[chunkhash].styles.css'),
-        new UglifyJsPlugin({
-            beautify: false, //prod
-            output: {
-                comments: false
-            }, //prod
-            mangle: {
-                screw_ie8: true
-            }, //prod
-            compress: {
-                screw_ie8: true,
-                warnings: false,
-                conditionals: true,
-                unused: true,
-                comparisons: true,
-                sequences: true,
-                dead_code: true,
-                evaluate: true,
-                if_return: true,
-                join_vars: true,
-                negate_iife: false
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    'to-string-loader',
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: helpers.root('config/sass-resources.scss')
+                        }
+                    }],
+                exclude: /(vendor\.scss|global\.scss)/
             },
+            {
+                test: /(global\.scss)/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: helpers.root('config/sass-resources.scss')
+                        }
+                    }
+                ]
+            },
+            {
+                test: /(vendor\.scss)/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+            }
+        ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[chunkhash].[name].css',
+            chunkFilename: '[chunkhash].[id].css'
         }),
+        new HashedModuleIdsPlugin(),
         new LoaderOptionsPlugin({
             minimize: true,
             debug: false,
             options: {
-                context: path.resolve(__dirname, '../'),
+                context: helpers.root(''),
                 htmlLoader: {
                     minimize: true,
                     removeAttributeQuotes: false,

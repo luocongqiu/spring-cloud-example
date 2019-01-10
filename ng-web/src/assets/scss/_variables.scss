@@ -1,0 +1,47 @@
+$theme: #00A1D0;
+$tip: #F17C68 !default;
+
+$theme-colors: (primary: $theme);
+
+$body-bg: #F1F3F7; // default bg color
+
+$border: rgba(0, 0, 0, 0.15); // border color
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+$badge-border-radius: 0.25em;
+$badge-padding-y: 0.3em;
+$badge-padding-x: 0.5em;
+
+$input-btn-padding-x: 1rem;
+
+$header-hover-bg: #0DA4D3;
+
+$table-head-bg: #f3f5f7;
+
+$sidebar-width: 13rem;
+//$sidebar: #343844;
+$sidebar: white;
+//$sidebar-text: #BBBBBB;
+$sidebar-title: #333;
+$sidebar-text: #666;
+$sidebar-hover-color: $theme;
+$sidebar-hover-bg: #EAF6FE;
+$sidebar-active-bg: #F6F7FB;
+$sidebar-active-color: $sidebar-hover-color;
+
+$color-border-light: #e8e8e8;
+$color-btn-blue: #228ef1;
+$color-btn-operate: #47b9dd;
+$color-td-hover: #0da4d3;
+$tree-bg-black: #32323a;
+
+$font-size-bg: 1.5rem;
+$font-size-xs: 0.75rem;
+
+$color-headline: #222;
+$color-subtitle: #222;
+$color-base: #454545;
+
+$card-cap-bg: white;

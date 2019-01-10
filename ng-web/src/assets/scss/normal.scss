@@ -1,17 +1,35 @@
 html {
   font-size: 16px;
-
   &.lower-ie {
-    ai-app, #pre-loader {
+    ai-app,
+    #pre-loader {
       display: none;
     }
   }
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  height: 100% !important;
   background-color: $body-bg;
   color: $color-base;
+  overflow: hidden;
+}
+
+html body.swal2-height-auto {
+  height: 100% !important;
+}
+
+.container {
+  background-color: $body-bg;
+  min-height: 100%;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  border: none;
 }
 
 .browser-upgrade {
@@ -25,7 +43,7 @@ a:hover {
   cursor: pointer;
 }
 
-.hand {
+.icon, .hand {
   cursor: pointer;
 }
 
@@ -34,15 +52,24 @@ input {
   appearance: textfield;
 }
 
-ul, ol, li, dl, dd {
+ul,
+ol,
+li,
+dl,
+dd {
   margin: 0;
   padding: 0;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none outside none;
 }
 
 [tabindex]:focus {
   outline: none;
+}
+
+.ace-edit-wrapper {
+  height: 40vh;
 }

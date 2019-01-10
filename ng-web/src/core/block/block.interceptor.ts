@@ -1,37 +1,44 @@
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RequestMethod } from '@angular/http';
-import { Observable } from 'rxjs';
-import { InterceptedRequest, InterceptedResponse, Interceptor } from 'share';
+import { Headers } from 'app/app.constants';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
+import { isPresent } from 'share';
 import { Block } from './block';
-import { HeaderMessage } from 'app/app.constants';
 
-@Injectable()
-export class BlockInterceptor implements Interceptor {
+@Injectable({ providedIn: 'root' })
+export class BlockInterceptor implements HttpInterceptor {
 
     constructor(private block: Block) {
     }
 
-    request(request: InterceptedRequest): Observable<InterceptedRequest> | InterceptedRequest {
-        let message = request.options.headers.get(HeaderMessage.BLOCK_MESSAGE);
-        if (message) {
-            this.block.show(message);
-            request.options.headers.delete(HeaderMessage.BLOCK_MESSAGE);
-            return request;
-        }
-        if (request.options.method === RequestMethod.Get) {
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        let message = req.headers.get(Headers.BLOCK);
+        if (isPresent(message)) {
+            if (message !== 'false') {
+                this.block.show(message);
+            }
+            req = req.clone({ headers: req.headers.delete(Headers.BLOCK) });
+        } else if (req.method === 'GET') {
             this.block.show();
-        } else if (request.options.method === RequestMethod.Post) {
+        } else if (req.method === 'POST') {
             this.block.show('正在保存数据...');
-        } else if (request.options.method === RequestMethod.Put) {
+        } else if (req.method === 'PUT') {
             this.block.show('正在修改数据...');
-        } else if (request.options.method === RequestMethod.Delete) {
+        } else if (req.method === 'DELETE') {
             this.block.show('正在删除数据...');
         }
-        return request;
-    }
-
-    response(response: InterceptedResponse): Observable<InterceptedResponse> | InterceptedResponse {
-        this.block.hide();
-        return response;
+        return next.handle(req).pipe(switchMap<any, any>(res => {
+            let isRes = res instanceof HttpResponse;
+            if (isRes && message !== 'false') {
+                this.block.hide();
+            }
+            return of(res);
+        }), catchError(res => {
+            if (message !== 'false') {
+                this.block.hide();
+            }
+            return throwError(res);
+        }));
     }
 }

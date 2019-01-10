@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Observer } from 'rxjs/Observer';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Observer, Subscription } from 'rxjs';
+import { filter, share } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class EventManager {
 
     private observable: Observable<any>;
     private observer: Observer<any>;
 
     constructor() {
-        this.observable = Observable.create((observer: Observer<any>) => {
+        this.observable = Observable.create(observer => {
             this.observer = observer;
-        }).share();
+        }).pipe(share());
     }
 
-    broadcast(event: { name: string, data?: any }) {
+    broadcast(name: string, data?: any) {
         if (this.observer != null) {
-            this.observer.next(event);
+            this.observer.next({ name, data });
         }
     }
 
     subscribe(eventName, callback): Subscription {
-        return this.observable.filter((event) => {
-            return event.name === eventName;
-        }).subscribe(callback);
+        return this.observable.pipe(filter((event) => event.name === eventName)).subscribe(event => callback(event.data));
     }
 
     destroy(subscriber: Subscription) {

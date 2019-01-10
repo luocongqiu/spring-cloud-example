@@ -10,7 +10,8 @@ zuul:
 ribbon:
   ReadTimeout: 15000
 
-
-logging:
-  level:
-    org.springframework:  debug
+security:
+  oauth2:
+    client:
+      client-id: root
+      client-secret: root

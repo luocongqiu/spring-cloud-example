@@ -64,7 +64,7 @@ logging:
 test:
   fresh: 6
 ```
-###数据库 
+### 数据库 
 数据库只有一张sys_user表，user_id、user_name两个字段
 ```
 spring:
@@ -75,7 +75,7 @@ spring:
    password: root
    driver-class-name: com.mysql.jdbc.Driver
 ```
-###logstash
+### logstash
 ```
 logstash:
  destination: 127.0.0.1:4560

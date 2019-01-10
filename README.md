@@ -18,9 +18,6 @@ spring boot admin 监控中心
 ## zipkin
 链路中心
 
-## 启动
-最先启动这两个服务 config-server -> eureka-server -> 最后启动另外的服务
-
 ## 配置文件修改
 修改配置文件config-repo/application.yml 中的数据库配置项和logstash地址
 ```
@@ -80,3 +77,6 @@ spring:
 logstash:
  destination: 127.0.0.1:4560
 ```
+
+## 启动
+最先启动这两个服务 config-server -> eureka-server -> 最后启动另外的服务

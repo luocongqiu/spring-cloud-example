@@ -13,7 +13,7 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "io.spring.gradle:dependency-management-plugin:${springDependencyManagementVersion}"
-        classpath "net.ltgt.gradle:gradle-apt-plugin:0.9"
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.19"
     }
 }
 

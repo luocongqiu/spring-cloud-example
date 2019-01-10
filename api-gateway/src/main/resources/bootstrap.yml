@@ -6,3 +6,5 @@ spring:
       uri:  http://localhost:8888
   profiles:
     active: #spring.profiles.active#
+
+

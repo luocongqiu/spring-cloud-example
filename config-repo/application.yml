@@ -1,0 +1,44 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1/dbName?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1
+    integration:
+      enabled: false
+    scheduled:
+      skip-pattern: "^org.*HystrixStreamTask$"
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+logstash:
+  destination: 127.0.0.1:4560
+
+logging:
+  config: classpath:logback-delay.xml
+  path: logs
+  level:
+    root: info
+
+
+test:
+  fresh: 6
+
+
+
